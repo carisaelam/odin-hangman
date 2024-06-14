@@ -1,21 +1,12 @@
-# [ ] Load dictionary and randomly select 5-12 char word
-# [ ] Display number of incorrect guesses remaining
-# [ ] Display board '_ _ _' => 'c _ t' => 'c a t'
-# [ ] Collect guess from player
-# [ ] Update board accordingly '_ _ _' => 'c _ t' => 'c a t'
+require_relative 'hangman'
 
-dictionary = '/Users/carisaelam/odin-repos/ruby/odin-hangman/dictionary.txt'
+# [ ] dictionary_file = 'dictionary.txt'
+# [ ] game = Game.new(dictionary_file)
+# [ ] game.start
 
-# Open the file and read its contents
-word_list = File.open(dictionary, 'r') do |file|
-  contents = file.readlines
-end
+word_list = File.readlines('/Users/carisaelam/odin-repos/ruby/odin-hangman/dictionary.txt').map(&:chomp)
 
-# [x] Randomly select 5–12 char word from a list
-def secret_word(word_list)
-  filtered_list = word_list.select { |word| word.chars.length > 5 && word.chars.length < 12 }
-  secret_word = filtered_list.sample
-  puts secret_word
-end
+filtered_words = word_list.select { |word| word.length.between?(5, 12) }
 
-secret_word(word_list)
+game = Hangman.new(filtered_words)
+game.start
