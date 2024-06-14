@@ -3,7 +3,7 @@
 require_relative 'hangman'
 require_relative 'serialize'
 
-word_list = File.readlines('dictionary.txt').map(&:chomp)
+word_list = File.readlines('../dictionary.txt').map(&:chomp)
 
 filtered_words = word_list.select { |word| word.length.between?(5, 12) }
 
