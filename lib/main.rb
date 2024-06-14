@@ -1,8 +1,7 @@
-require_relative 'hangman'
+# frozen_string_literal: true
 
-# [ ] dictionary_file = 'dictionary.txt'
-# [ ] game = Game.new(dictionary_file)
-# [ ] game.start
+require_relative 'hangman'
+require_relative 'serialize'
 
 word_list = File.readlines('/Users/carisaelam/odin-repos/ruby/odin-hangman/dictionary.txt').map(&:chomp)
 
